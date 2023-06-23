@@ -1,15 +1,38 @@
-# 讀取檔案
+import os # operating system
+
+# 檢查是否有檔案
 products = []
-with open('products.csv', 'r', encoding='utf-8') as f:
-	for line in f:
-		if '商品,價格' in line:
-			continue # 繼續, 使用在迴圈,指跳到下一迴圈再處理
-		#s = line.strip().split(',') # strip把換行和空格去掉, 再用逗點當切割
-		#name = s[0] # s清單中的第一欄是名稱
-		#price = s[1] # s清單中的第二欄是價錢
-		name, price = line.strip().split(',') # 上面三行可結合成一行
-		products.append([name, price])
-print(products)
+if os.path.isfile('products.csv'):
+	print('yeah! 找到檔案了')
+	# 讀取檔案
+	with open('products.csv', 'r', encoding='utf-8') as f:
+		for line in f:
+			if '商品,價格' in line:
+				continue # 繼續, 使用在迴圈,指跳到下一迴圈再處理
+			#s = line.strip().split(',') # strip把換行和空格去掉, 再用逗點當切割
+			#name = s[0] # s清單中的第一欄是名稱
+			#price = s[1] # s清單中的第二欄是價錢
+			name, price = line.strip().split(',') # 上面三行可結合成一行
+			products.append([name, price])
+	print(products)
+else:
+	print('找不到檔案......')
+
+
+
+
+# 讀取檔案
+#products = []
+#with open('products.csv', 'r', encoding='utf-8') as f:
+#	for line in f:
+#		if '商品,價格' in line:
+#			continue # 繼續, 使用在迴圈,指跳到下一迴圈再處理
+#		#s = line.strip().split(',') # strip把換行和空格去掉, 再用逗點當切割
+#		#name = s[0] # s清單中的第一欄是名稱
+#		#price = s[1] # s清單中的第二欄是價錢
+#		name, price = line.strip().split(',') # 上面三行可結合成一行
+#		products.append([name, price])
+#print(products)
 
 # 讓使用者輸入
 while True:
